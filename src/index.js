@@ -27,13 +27,4 @@ function getMovie(e) {
     });
 }
 
-// render movie details
-function renderMovie(movie) {
-  const movieDetails = document.querySelector("#movieDetails");
-  const header = movieDetails.querySelector("h4");
-  const summary = movieDetails.querySelector("p");
-  header.innerHTML = movie.title;
-  summary.innerHTML = movie.summary;
-}
-
 document.addEventListener("DOMContentLoaded", init);
