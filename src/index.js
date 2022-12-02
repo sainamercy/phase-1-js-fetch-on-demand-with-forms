@@ -1,5 +1,39 @@
 const init = () => {
-  
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", getMovie)
+};
+
+// render movie details
+function renderMovie(movie) {
+  const movieDetails = document.querySelector("#movieDetails");
+  const header = movieDetails.querySelector("h4");
+  const summary = movieDetails.querySelector("p");
+  header.innerHTML = movie.title;
+  summary.innerHTML = movie.summary;
 }
 
-document.addEventListener('DOMContentLoaded', init);
+
+// get movie data
+function getMovie(e) {
+  e.preventDefault();
+  const id = document.querySelector("#searchByID").value;
+  fetch(`http://localhost:3000/movies/${id}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      renderMovie(data);
+    });
+}
+
+// render movie details
+function renderMovie(movie) {
+  const movieDetails = document.querySelector("#movieDetails");
+  const header = movieDetails.querySelector("h4");
+  const summary = movieDetails.querySelector("p");
+  header.innerHTML = movie.title;
+  summary.innerHTML = movie.summary;
+}
+
+document.addEventListener("DOMContentLoaded", init);
