@@ -18,6 +18,7 @@ function renderMovie(movie) {
 function getMovie(e) {
   e.preventDefault();
   const id = document.querySelector("#searchByID").value;
+  if(id > 0 && id <= 3){
   fetch(`http://localhost:3000/movies/${id}`)
     .then((res) => {
       return res.json();
@@ -25,6 +26,10 @@ function getMovie(e) {
     .then((data) => {
       renderMovie(data);
     });
+  }else{
+    alert("id not found")
+    location.reload()
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init);
